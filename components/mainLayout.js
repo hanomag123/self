@@ -36,6 +36,7 @@ function find() {
     let ids = event.target.closest('.cont').id
     let arr = JSON.parse(localStorage.getItem('persons'));
     arr = arr.find(v => v.id === ids)
+    window.history.pushState({},'','/' + arr.id)
     console.log(arr)
     cur = arr;
     let newArr = document.querySelectorAll('.cont')
@@ -53,6 +54,7 @@ function find() {
     document.body.appendChild(modal)
     } else if(event.target.dataset.type === 'save') {
         newRenderData()
+        window.history.pushState({},'','/main')
         document.querySelector('.modal').remove()
     } else if(event.target.dataset.type === 'edit') {
         let input = document.querySelectorAll('input')
